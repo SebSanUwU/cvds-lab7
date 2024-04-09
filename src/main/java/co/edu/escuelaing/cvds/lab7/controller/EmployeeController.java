@@ -3,20 +3,20 @@ package co.edu.escuelaing.cvds.lab7.controller;
 
 import co.edu.escuelaing.cvds.lab7.model.Employee;
 import co.edu.escuelaing.cvds.lab7.service.EmployeeService;
-import jakarta.persistence.Access;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    @Autowired
     EmployeeService employeeService;
+    private static final String ACTION_1 = "redirect:/employees/list";
+
+    @Autowired
     @GetMapping("/list")
     public String employees(Model model) {
         model.addAttribute("empleados",employeeService.getAllEmployees());
@@ -32,7 +32,7 @@ public class EmployeeController {
     @PostMapping("/agregar")
     public String agregarEmpleado(Employee empleado) {
         employeeService.addEmployee(empleado);
-        return "redirect:/employees/list"; // Redirigir a la lista de empleados
+        return ACTION_1; // Redirigir a la lista de empleados
     }
 
     @GetMapping("/modificar/{employeeId}")
@@ -45,13 +45,13 @@ public class EmployeeController {
     public String ModificarEmpleado(@PathVariable Long employeeId,@ModelAttribute Employee updatedEmployee) {
         System.out.println(updatedEmployee);
         employeeService.updateEmployee(updatedEmployee);
-        return "redirect:/employees/list";
+        return ACTION_1;
     }
 
     @PostMapping("/eliminar/{employeeId}")
     public String eliminarEmployee(@PathVariable Long employeeId) {
         employeeService.deleteUser(employeeId);
-        return "redirect:/employees/list";
+        return ACTION_1;
     }
 
 }
