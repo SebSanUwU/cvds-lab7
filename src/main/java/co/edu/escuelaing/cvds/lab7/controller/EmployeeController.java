@@ -7,12 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import java.util.logging.Logger;
 
 
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
+    Logger logger = Logger.getLogger(getClass().getName());
     EmployeeService employeeService;
     private static final String ACTION_1 = "redirect:/employees/list";
 
@@ -42,7 +44,7 @@ public class EmployeeController {
     }
 
     @PostMapping("/modificar/{employeeId}")
-    public String ModificarEmpleado(@PathVariable Long employeeId,@ModelAttribute Employee updatedEmployee) {
+    public String modificarEmpleado(@PathVariable Long employeeId,@ModelAttribute Employee updatedEmployee) {
         System.out.println(updatedEmployee);
         employeeService.updateEmployee(updatedEmployee);
         return ACTION_1;
