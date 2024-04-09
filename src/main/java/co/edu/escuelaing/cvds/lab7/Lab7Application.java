@@ -30,10 +30,9 @@ public class Lab7Application {
 			configurationService.addConfiguration(new Configuration("price", "800000"));
 
 			logger.info("\nGetting all configurations....");
-			configurationService.getAllConfigurations().forEach(System.out::println);
+			configurationService.getAllConfigurations().forEach(configuration -> logger.info(String.valueOf(configuration)));
 
 		};
 	}
 
 }
-
