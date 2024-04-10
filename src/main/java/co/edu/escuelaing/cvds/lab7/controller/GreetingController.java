@@ -14,8 +14,8 @@ public class GreetingController {
         model.addAttribute("name", name);
         return "greeting";
     }
-
-    @RequestMapping(value = "/to-do-item/{id}",method = RequestMethod.GET)
+    
+    @GetMapping("/to-do-item/{id}")
     public String getUser(@PathVariable Integer id, Model model) {
         String uri = "https://jsonplaceholder.typicode.com/todos/" + Integer.toString(id);
         RestTemplate restTemplate = new RestTemplate();
