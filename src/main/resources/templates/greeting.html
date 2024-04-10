@@ -1,6 +1,9 @@
 <!DOCTYPE HTML>
 <html lang="en" xml:lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace="fragments/general.html::headerfiles('Greeting Page')"></th:block>
+<head>
+    <title>Greeting</title>
+</head>
 <body>
 <main>
     <h1 th:text="'Hello, ' + ${name} + '!'"/>
