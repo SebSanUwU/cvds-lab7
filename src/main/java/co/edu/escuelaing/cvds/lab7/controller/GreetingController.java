@@ -12,20 +12,22 @@ import org.springframework.web.client.RestTemplate;
 @Controller
 public class GreetingController {
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting";
-    }
-
     @RequestMapping("/to-do-item/{id}")
     public String getUser(@PathVariable Integer id, Model model) {
-        String uri = "https://jsonplaceholder.typicode.com/todos/" + Integer.toString(id);
+        String uri = "https://jsonplaceholder.typicode.com/todos/{id}";
         RestTemplate restTemplate = new RestTemplate();
 
-        ToDoItem toDoItem = restTemplate.getForObject(uri, ToDoItem.class);
+        try {
+            ToDoItem toDoItem = restTemplate.getForObject(uri, ToDoItem.class, id);
+            if (toDoItem != null) {
+                model.addAttribute("toDoItem", toDoItem);
+            } else {
+                return "error";
+            }
+        } catch (Exception e) {
+            return "error";
+        }
 
-        model.addAttribute("toDoItem", toDoItem);
         return "to-do-item";
     }
 }
