@@ -45,7 +45,6 @@ public class EmployeeController {
 
     @PostMapping("/modificar/{employeeId}")
     public String modificarEmpleado(@PathVariable Long employeeId,@ModelAttribute Employee updatedEmployee) {
-        System.out.println(updatedEmployee);
         employeeService.updateEmployee(updatedEmployee);
         return ACTION_1;
     }
