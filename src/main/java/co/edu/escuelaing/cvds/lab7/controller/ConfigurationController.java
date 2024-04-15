@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class ConfigurationController {
     private final ConfigurationService configurationService;
@@ -14,6 +15,7 @@ public class ConfigurationController {
         this.configurationService = configurationService;
     }
 
+    @Autowired
     @GetMapping("/example")
     public String example(Model model) {
         model.addAttribute("premio", configurationService.getPremio());
