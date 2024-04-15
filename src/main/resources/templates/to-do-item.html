@@ -1,15 +1,17 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
-<head>
-    <title>Titulo</title>
-</head>
+
+<html lang="en" xml:lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <th:block th:replace="fragments/general.html::headerfiles('Example Page')"></th:block>
+<head>
+    <title>To Do Item Page</title>
+</head>
 <body>
 <main>
     <h2 class="display-6 text-center mb-4">To Do Item</h2>
     <div class="table-responsive">
-        <table class="table table-info">
-            <caption>Compliant solution</caption>
+        <table class="table table-info" aria-describedby="List To DO">
+
             <thead>
             <tr>
                 <th scope="col">Property</th>

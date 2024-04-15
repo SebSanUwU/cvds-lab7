@@ -10,15 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.logging.Logger;
 
 
+
 @Controller
 @RequestMapping("/employees")
 public class EmployeeController {
 
-    Logger logger = Logger.getLogger(getClass().getName());
-    EmployeeService employeeService;
     private static final String ACTION_1 = "redirect:/employees/list";
 
+    private final EmployeeService employeeService;
+  
     @Autowired
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
+
     @GetMapping("/list")
     public String employees(Model model) {
         model.addAttribute("empleados",employeeService.getAllEmployees());

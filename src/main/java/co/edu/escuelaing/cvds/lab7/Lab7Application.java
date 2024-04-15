@@ -14,10 +14,15 @@ import org.springframework.context.annotation.Bean;
 public class Lab7Application {
 
 	Logger logger = Logger.getLogger(getClass().getName());
-	ConfigurationService configurationService;
-	EmployeeService employeeService;
-
+	private final ConfigurationService configurationService;
+	private final EmployeeService employeeService;
 	@Autowired
+	public Lab7Application(ConfigurationService configurationService, EmployeeService employeeService) {
+		this.configurationService = configurationService;
+		this.employeeService = employeeService;
+	}
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(Lab7Application.class, args);
 	}
@@ -31,7 +36,6 @@ public class Lab7Application {
 
 			logger.info("\nGetting all configurations....");
 			configurationService.getAllConfigurations().forEach(configuration -> logger.info(String.valueOf(configuration)));
-
 		};
 	}
 

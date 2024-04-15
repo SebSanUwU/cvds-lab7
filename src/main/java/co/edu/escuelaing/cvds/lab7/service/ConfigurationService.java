@@ -16,8 +16,8 @@ public class ConfigurationService {
         this.configurationRepository = configurationRepository;
     }
 
-    public Configuration addConfiguration(Configuration configuration) {
-        return configurationRepository.save(configuration);
+    public void addConfiguration(Configuration configuration) {
+        configurationRepository.save(configuration);
     }
 
     public Configuration getConfiguration(String propiedad) {
