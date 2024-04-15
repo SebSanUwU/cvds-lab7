@@ -33,7 +33,7 @@ public class EmployeeService {
     }
 
     public void deleteUser(Long userId) {
-        employeeRepository.deleteById(Long.valueOf(userId));
+        employeeRepository.deleteById(userId);
     }
 
 }
